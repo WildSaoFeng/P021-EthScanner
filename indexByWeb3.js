@@ -76,11 +76,11 @@ async function scanTheChain() {
 
     // TRY C: AWAIT
     var blockInfo = await web3.eth.getBlock(i);
-    console.log("XXX => " + blockInfo);
+    // BUG FIXED: Notice that in this place you must split up and down sentence.
     var blockTxes = blockInfo.transactions;
     var blockTxCnt = await web3.eth.getBlockTransactionCount(i);
     console.log("CNT => " + blockTxCnt);
-    console.log("TX => " + blockTxes);
+    console.log(blockTxes);
 
     // for(let j = 1; j <= blockTxCnt; j++) {
     //   var thisTx = web3.eth.getTransaction(blockTxes[j]);
