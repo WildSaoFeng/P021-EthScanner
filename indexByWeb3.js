@@ -70,7 +70,7 @@ async function uniqueAddAddress(newAddress) {
 
 // Part  Scan the Whole Chain
 
-async function scanTheChain() {
+function scanTheChain() {
   for(let i = startBlock; i <= endBlock; i++) {
     console.log("[ " + moment().format('MMMM Do YYYY, h:mm:ss a') + " ] " + "Scanning Block " + i);
     var blockTxes = web3.eth.getBlock(i).transactions;
