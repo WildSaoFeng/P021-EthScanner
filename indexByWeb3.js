@@ -3,7 +3,7 @@ var Web3 = require('web3');
 var mongoose = require('mongoose');
 var moment = require('moment');
 
-const maxBlock = 100000;
+const maxBlock = 2000000;
 
 // Part  Setting Up DB Model
 const ethContractSchema = mongoose.Schema({
