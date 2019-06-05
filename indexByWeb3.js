@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 
 const startBlock = 1900000;
-const endBlock = 1900010;
+const endBlock = 5000000;
 
 // Part  Setting Up DB Model
 const ethContractSchema = mongoose.Schema({
