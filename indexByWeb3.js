@@ -123,7 +123,7 @@ async function scanTheChain() {
 }
 
 // Part Main Function
-(function main(){
+(async function main(){
   moment.locale('zh-cn');
   await connectDB();
   await connectWeb3();
