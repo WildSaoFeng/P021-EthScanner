@@ -71,7 +71,7 @@ async function uniqueAddAddress(newAddress) {
 
 async function scanTheChain() {
   for(let i = 1; i <= maxBlock; i++) {
-    console.log("[ " + moment().format('MMMM Do YYYY, h:mm:ss a'); + " ] " + "Scanning Block " + i);
+    console.log("[ " + moment().format('MMMM Do YYYY, h:mm:ss a') + " ] " + "Scanning Block " + i);
     var blockTxes = web3.eth.getBlock(i).transactions;
     var blockTxCnt = web3.eth.getBlockTransactionCount(i);
     for(let j = 1; j <= blockTxCnt; j++) {
