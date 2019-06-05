@@ -82,7 +82,7 @@ async function scanTheChain() {
     // console.log("CNT => " + blockTxCnt);
     // console.log(blockTxes);
 
-    for(let j = 1; j <= blockTxCnt; j++) {
+    for(let j = 0; j < blockTxCnt; j++) {
       var thisTx = await web3.eth.getTransaction(blockTxes[j]);
       const txFrom = thisTx.from;
       // uniqueAddAddress(txFrom);
