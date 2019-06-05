@@ -35,12 +35,12 @@ EthContract.checkUnique = function(contractAddress) {
 
 // Part  Connection to Local RPC
 
-function connectWeb3() {
+async function connectWeb3() {
   web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
   global.web3 = web3;
 }
 
-function connectDB() {
+async function connectDB() {
   mongoose.connect('mongodb://localhost:27017/ethscanner');
   mongoose.connection.on('connected', () => {
    console.log('MongoDB has started successfully.');
@@ -75,7 +75,9 @@ async function scanTheChain() {
     console.log("[ " + moment().format('MMMM Do YYYY, h:mm:ss a') + " ] " + "Scanning Block " + i);
 
     // TRY C: AWAIT
-    var blockTxes = await web3.eth.getBlock(i).transactions;
+    var blockInfo = await web3.eth.getBlock(i);
+    console.log("XXX => " blockInfo[0]);
+    var blockTxes = blockInfo[1].transactions;
     var blockTxCnt = await web3.eth.getBlockTransactionCount(i);
     console.log("CNT => " + blockTxCnt);
     console.log("TX => " + blockTxes);
@@ -123,8 +125,8 @@ async function scanTheChain() {
 // Part Main Function
 (function main(){
   moment.locale('zh-cn');
-  connectDB();
-  connectWeb3();
-  scanTheChain();
+  await connectDB();
+  await connectWeb3();
+  await scanTheChain();
 })();
 
