@@ -78,7 +78,7 @@ async function scanTheChain() {
     for(let j = 1; j <= blockTxCnt; j++) {
       var thisTx = web3.eth.getTransaction(blockTxes[j]);
       const txFrom = thisTx.from;
-      console.log('txFrom');
+      console.log('*** txFrom *** ' + txFrom);
       uniqueAddAddress(txFrom);
       const txTo = thisTx.to;
       uniqueAddAddress(txTo);
