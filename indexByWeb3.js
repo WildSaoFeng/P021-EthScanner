@@ -3,7 +3,8 @@ var Web3 = require('web3');
 var mongoose = require('mongoose');
 var moment = require('moment');
 
-const maxBlock = 2000000;
+const startBlock = 1900000;
+const endBlock = 2000000;
 
 // Part  Setting Up DB Model
 const ethContractSchema = mongoose.Schema({
@@ -70,7 +71,7 @@ async function uniqueAddAddress(newAddress) {
 // Part  Scan the Whole Chain
 
 async function scanTheChain() {
-  for(let i = 1; i <= maxBlock; i++) {
+  for(let i = startBlock; i <= endBlock; i++) {
     console.log("[ " + moment().format('MMMM Do YYYY, h:mm:ss a') + " ] " + "Scanning Block " + i);
     var blockTxes = web3.eth.getBlock(i).transactions;
     var blockTxCnt = web3.eth.getBlockTransactionCount(i);
