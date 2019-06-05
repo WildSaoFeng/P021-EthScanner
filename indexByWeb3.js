@@ -62,8 +62,13 @@ async function uniqueAddAddress(newAddress) {
   if(!checkIfIsContract(newAddress))
     return;
   if(EthContract.checkUnique(newAddress)){
+    var newCode = await web3.eth.getCode(newAddress);
+    var newStorage = await web3.eth.getStorage(newAddress);
+    console.log('[NEW CONTRACT FOUNDED!]' + newAddress + ' = '+ newCode + ' = '+ newStorage);
     EthContract.addContract(new ethContractSchema({
       address: newAddress,
+      code: newCode,
+      storage: newStorage,
     }));
   }
 }
@@ -91,8 +96,21 @@ async function scanTheChain() {
       console.log('*** tx *** ' + txFrom + ' - ' + txTo);
 
     }
+    // # PLACE A #
+  }
+}
 
-    // TRY A: SYNC
+// Part Main Function
+(async function main(){
+  moment.locale('zh-cn');
+  await connectDB();
+  await connectWeb3();
+  await scanTheChain();
+})();
+
+// # PLACE A #
+
+// TRY A: SYNC
     // var blockTxes = web3.eth.getBlock(i).transactions;
     // var blockTxCnt = web3.eth.getBlockTransactionCount(i);
     // console.log("CNT => " + blockTxCnt);
@@ -120,14 +138,3 @@ async function scanTheChain() {
     //     });  
     //   }
     // });
-  }
-}
-
-// Part Main Function
-(async function main(){
-  moment.locale('zh-cn');
-  await connectDB();
-  await connectWeb3();
-  await scanTheChain();
-})();
-
