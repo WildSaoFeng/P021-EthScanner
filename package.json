@@ -1,0 +1,29 @@
+{
+  "name": "p021-ethscanner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "indexByWeb3.js",
+  "dependencies": {
+    "ethereumjs-account": "^3.0.0",
+    "ethereumjs-util": "^6.1.0",
+    "leveldown": "^5.1.0",
+    "levelup": "^4.0.1",
+    "merkle-patricia-tree": "^3.0.0",
+    "rlp": "^2.2.3",
+    "web3": "^1.0.0-beta.55"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WildSaoFeng/P021-EthScanner.git"
+  },
+  "author": "WildSaoFeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WildSaoFeng/P021-EthScanner/issues"
+  },
+  "homepage": "https://github.com/WildSaoFeng/P021-EthScanner#readme"
+}
