@@ -70,9 +70,24 @@ async function uniqueAddAddress(newAddress) {
 
 // Part  Scan the Whole Chain
 
-function scanTheChain() {
+async function scanTheChain() {
   for(let i = startBlock; i <= endBlock; i++) {
     console.log("[ " + moment().format('MMMM Do YYYY, h:mm:ss a') + " ] " + "Scanning Block " + i);
+
+    // TRY C: AWAIT
+    var blockTxes = await web3.eth.getBlock(i);
+    var blockTxCnt = await web3.eth.getBlockTransactionCount(i);
+    console.log("CNT => " + blockTxCnt);
+    // for(let j = 1; j <= blockTxCnt; j++) {
+    //   var thisTx = web3.eth.getTransaction(blockTxes[j]);
+    //   const txFrom = thisTx.from;
+    //   console.log('*** txFrom *** ' + txFrom);
+    //   uniqueAddAddress(txFrom);
+    //   const txTo = thisTx.to;
+    //   uniqueAddAddress(txTo);
+    // }
+
+    // TRY A: SYNC
     // var blockTxes = web3.eth.getBlock(i).transactions;
     // var blockTxCnt = web3.eth.getBlockTransactionCount(i);
     // console.log("CNT => " + blockTxCnt);
@@ -85,21 +100,21 @@ function scanTheChain() {
     //   uniqueAddAddress(txTo);
     // }
 
-    web3.eth.getBlock(i, (err, theBlock) => {
-      var blockTxes = theBlock.transactions;
-      // console.log(blockTxes);
-      var txCnt = blockTxes.length;
-      for(let j = 1; j <= blockTxCnt; j++) {
-        web3.eth.getTransaction(blockTxes[j], (err, thisTx) => {
-          const txFrom = thisTx.from;
-          console.log('*** txFrom *** ' + txFrom);
-          // uniqueAddAddress(txFrom);
-          const txTo = thisTx.to;
-          // uniqueAddAddress(txTo);
-        });  
-      }
-    });
-
+    // TRY B: ASYNC
+    // web3.eth.getBlock(i, (err, theBlock) => {
+    //   var blockTxes = theBlock.transactions;
+    //   // console.log(blockTxes);
+    //   var txCnt = blockTxes.length;
+    //   for(let j = 1; j <= blockTxCnt; j++) {
+    //     web3.eth.getTransaction(blockTxes[j], (err, thisTx) => {
+    //       const txFrom = thisTx.from;
+    //       console.log('*** txFrom *** ' + txFrom);
+    //       // uniqueAddAddress(txFrom);
+    //       const txTo = thisTx.to;
+    //       // uniqueAddAddress(txTo);
+    //     });  
+    //   }
+    // });
   }
 }
 
