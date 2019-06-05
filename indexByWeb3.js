@@ -35,12 +35,12 @@ EthContract.checkUnique = function(contractAddress) {
 
 // Part  Connection to Local RPC
 
-async function connectWeb3() {
+function connectWeb3() {
   web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
   global.web3 = web3;
 }
 
-async function connectDB() {
+function connectDB() {
   mongoose.connect('mongodb://localhost:27017/ethscanner');
   mongoose.connection.on('connected', () => {
    console.log('MongoDB has started successfully.');
