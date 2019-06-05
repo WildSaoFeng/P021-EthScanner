@@ -85,7 +85,7 @@ function scanTheChain() {
     //   uniqueAddAddress(txTo);
     // }
 
-    await web3.eth.getBlock(i, (err, theBlock) => {
+    web3.eth.getBlock(i, (err, theBlock) => {
       var blockTxes = theBlock.transactions;
       console.log(blockTxes);
     });
