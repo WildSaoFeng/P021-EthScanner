@@ -87,7 +87,17 @@ function scanTheChain() {
 
     web3.eth.getBlock(i, (err, theBlock) => {
       var blockTxes = theBlock.transactions;
-      console.log(blockTxes);
+      // console.log(blockTxes);
+      var txCnt = blockTxes.length;
+      for(let j = 1; j <= blockTxCnt; j++) {
+        web3.eth.getTransaction(blockTxes[j], (err, thisTx) => {
+          const txFrom = thisTx.from;
+          console.log('*** txFrom *** ' + txFrom);
+          // uniqueAddAddress(txFrom);
+          const txTo = thisTx.to;
+          // uniqueAddAddress(txTo);
+        });  
+      }
     });
 
   }
