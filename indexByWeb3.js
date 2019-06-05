@@ -76,7 +76,7 @@ async function scanTheChain() {
 
     // TRY C: AWAIT
     var blockInfo = await web3.eth.getBlock(i);
-    console.log("XXX => " blockInfo[0]);
+    console.log("XXX => " + blockInfo[0]);
     var blockTxes = blockInfo[1].transactions;
     var blockTxCnt = await web3.eth.getBlockTransactionCount(i);
     console.log("CNT => " + blockTxCnt);
