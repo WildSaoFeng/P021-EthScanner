@@ -49,7 +49,7 @@ async function connectDB() {
   });
 }
 
-// 
+// Part Functions
 function checkIfIsContract(newAddress) {
   var code = web3.eth.getCode(newAddress);
   if(code === '0x')
@@ -85,8 +85,7 @@ async function scanTheChain() {
   }
 }
 
-
-
+// Part Main Function
 (function main(){
   moment.locale('zh-cn');
   moment().format('MMMM Do YYYY, h:mm:ss a');
