@@ -74,22 +74,23 @@ async function scanTheChain() {
   for(let i = startBlock; i <= endBlock; i++) {
     console.log("[ " + moment().format('MMMM Do YYYY, h:mm:ss a') + " ] " + "Scanning Block " + i);
 
-    // TRY C: AWAIT
+    // TRY C: AWAIT # This one finally work!
     var blockInfo = await web3.eth.getBlock(i);
     // BUG FIXED: Notice that in this place you must split up and down sentence.
     var blockTxes = blockInfo.transactions;
     var blockTxCnt = await web3.eth.getBlockTransactionCount(i);
-    console.log("CNT => " + blockTxCnt);
-    console.log(blockTxes);
+    // console.log("CNT => " + blockTxCnt);
+    // console.log(blockTxes);
 
-    // for(let j = 1; j <= blockTxCnt; j++) {
-    //   var thisTx = web3.eth.getTransaction(blockTxes[j]);
-    //   const txFrom = thisTx.from;
-    //   console.log('*** txFrom *** ' + txFrom);
-    //   uniqueAddAddress(txFrom);
-    //   const txTo = thisTx.to;
-    //   uniqueAddAddress(txTo);
-    // }
+    for(let j = 1; j <= blockTxCnt; j++) {
+      var thisTx = await web3.eth.getTransaction(blockTxes[j]);
+      const txFrom = thisTx.from;
+      // uniqueAddAddress(txFrom);
+      const txTo = thisTx.to;
+      // uniqueAddAddress(txTo);
+      console.log('*** tx *** ' + txFrom + ' - ' + txTo);
+
+    }
 
     // TRY A: SYNC
     // var blockTxes = web3.eth.getBlock(i).transactions;
