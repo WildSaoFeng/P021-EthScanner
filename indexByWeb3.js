@@ -75,7 +75,7 @@ async function scanTheChain() {
     console.log("[ " + moment().format('MMMM Do YYYY, h:mm:ss a') + " ] " + "Scanning Block " + i);
 
     // TRY C: AWAIT
-    var blockTxes = await web3.eth.getBlock(i);
+    var blockTxes = await web3.eth.getBlock(i).transactions;
     var blockTxCnt = await web3.eth.getBlockTransactionCount(i);
     console.log("CNT => " + blockTxCnt);
     console.log("TX => " + blockTxes);
