@@ -51,8 +51,10 @@ async function connectDB() {
 }
 
 // Part Functions
-function checkIfIsContract(newAddress) {
-  var code = web3.eth.getCode(newAddress);
+async function checkIfIsContract(newAddress) {
+  if(newAddress == null)
+    return false;
+  var code = await web3.eth.getCode(newAddress);
   console.log(" ** CODE ** " + code);
   if(code == '0x')
     return false;
