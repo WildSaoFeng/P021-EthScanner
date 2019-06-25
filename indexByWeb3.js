@@ -55,9 +55,9 @@ async function checkIfIsContract(newAddress) {
   if(newAddress == null)
     return false;
   var code = await web3.eth.getCode(newAddress);
-  console.log(" ** CODE ** " + code);
+  // console.log(" ** CODE ** " + code);
   if(code == '0x') {
-    console.log('NOT CONTRACT');
+    // console.log('NOT CONTRACT');
     return false;
   }
   else return true;
@@ -67,12 +67,12 @@ async function uniqueAddAddress(newAddress) {
   let result = await checkIfIsContract(newAddress);
   if(!result)
     return;
-  console.log(" RESULT " + result);
+  // console.log(" RESULT " + result);
   // if(EthContract.checkUnique(newAddress)){
   {
-    console.log(" *** [NEW CONTRACT] *** " + newAddress);
+    // console.log(" *** [NEW CONTRACT] *** " + newAddress);
     var newCode = await web3.eth.getCode(newAddress);
-    var newStorage = await web3.eth.getStorage(newAddress);
+    var newStorage = await web3.eth.getStorageAt(newAddress);
     console.log('[NEW CONTRACT FOUNDED!]' + newAddress + ' = '+ newCode + ' = '+ newStorage);
     EthContract.addContract(new ethContractSchema({
       address: newAddress,
