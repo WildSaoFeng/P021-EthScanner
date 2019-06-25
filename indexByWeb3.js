@@ -3,8 +3,8 @@ var Web3 = require('web3');
 var mongoose = require('mongoose');
 var moment = require('moment');
 
-const startBlock = 1;
-const endBlock = 5000000;
+const startBlock = 5000000
+const endBlock = 6000000;
 
 // Part  Setting Up DB Model
 const ethContractSchema = mongoose.Schema({
