@@ -53,6 +53,7 @@ async function connectDB() {
 // Part Functions
 function checkIfIsContract(newAddress) {
   var code = web3.eth.getCode(newAddress);
+  console.log(" ** CODE ** " + code);
   if(code == '0x')
     return false;
   else return true;
