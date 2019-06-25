@@ -61,7 +61,7 @@ function checkIfIsContract(newAddress) {
 async function uniqueAddAddress(newAddress) {
   if(!checkIfIsContract(newAddress))
     return;
-  console.log(" *** [NEW CONTRACT] *** " newAddress);
+  console.log(" *** [NEW CONTRACT] *** " + newAddress);
   if(EthContract.checkUnique(newAddress)){
     var newCode = await web3.eth.getCode(newAddress);
     var newStorage = await web3.eth.getStorage(newAddress);
