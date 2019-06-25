@@ -73,8 +73,9 @@ async function uniqueAddAddress(newAddress) {
     // console.log(" *** [NEW CONTRACT] *** " + newAddress);
     var newCode = await web3.eth.getCode(newAddress);
     var newStorage = await web3.eth.getStorageAt(newAddress);
-    console.log('[NEW CONTRACT FOUNDED!]' + newAddress + ' = '+ newCode + ' = '+ newStorage);
-    EthContract.addContract(new ethContractSchema({
+    // console.log('[NEW CONTRACT FOUNDED!]' + newAddress + ' = '+ newCode + ' = '+ newStorage);
+    console.log('[NEW CONTRACT FOUNDED!]' + newAddress );
+    EthContract.addContract(new EthContract({
       address: newAddress,
       code: newCode,
       storage: newStorage,
