@@ -3,7 +3,7 @@ var Web3 = require('web3');
 var mongoose = require('mongoose');
 var moment = require('moment');
 
-const startBlock = 1900000;
+const startBlock = 4900000;
 const endBlock = 5000000;
 
 // Part  Setting Up DB Model
@@ -61,6 +61,7 @@ function checkIfIsContract(newAddress) {
 async function uniqueAddAddress(newAddress) {
   if(!checkIfIsContract(newAddress))
     return;
+  console.log(" *** [NEW CONTRACT] *** " newAddress);
   if(EthContract.checkUnique(newAddress)){
     var newCode = await web3.eth.getCode(newAddress);
     var newStorage = await web3.eth.getStorage(newAddress);
@@ -90,10 +91,10 @@ async function scanTheChain() {
     for(let j = 0; j < blockTxCnt; j++) {
       var thisTx = await web3.eth.getTransaction(blockTxes[j]);
       const txFrom = thisTx.from;
-      // uniqueAddAddress(txFrom);
+      uniqueAddAddress(txFrom);
       const txTo = thisTx.to;
-      // uniqueAddAddress(txTo);
-      console.log('*** tx *** ' + txFrom + ' - ' + txTo);
+      uniqueAddAddress(txTo);
+      // console.log('*** tx *** ' + txFrom + ' - ' + txTo);
 
     }
     // # PLACE A #
