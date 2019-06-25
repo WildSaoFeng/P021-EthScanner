@@ -27,10 +27,11 @@ EthContract.updateContract = function(contractAddress, newCode, newStorage) {
 }
 
 EthContract.checkUnique = function(contractAddress) {
-  EthContract.find({address: contractAddress}, (err, res) => {
-    if(res) return false;
-    return true;
-  });
+  let res = EthContract.find({address: contractAddress});
+  console.log(res);
+  if(res) return false;
+  return true;
+
 };
 
 // Part  Connection to Local RPC
@@ -68,10 +69,12 @@ async function uniqueAddAddress(newAddress) {
   if(!result)
     return;
   // console.log(" RESULT " + result);
-  let result2 = await EthContract.checkUnique(newAddress);
-  console.log(" RESULT " + result2);
-  if(!result2)
-    return ;
+ 
+  // let result2 = await EthContract.checkUnique(newAddress);
+  // console.log(" RESULT " + result2);
+  // if(!result2)
+  //   return ;
+ 
   {
     // console.log(" *** [NEW CONTRACT] *** " + newAddress);
     var newCode = await web3.eth.getCode(newAddress);
