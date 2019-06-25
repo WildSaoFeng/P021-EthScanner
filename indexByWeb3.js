@@ -68,8 +68,9 @@ async function uniqueAddAddress(newAddress) {
   if(!result)
     return;
   // console.log(" RESULT " + result);
-  // if(EthContract.checkUnique(newAddress)){
-  
+  let result2 = await EthContract.checkUnique(newAddress);
+  if(!result2)
+    return ;
   {
     // console.log(" *** [NEW CONTRACT] *** " + newAddress);
     var newCode = await web3.eth.getCode(newAddress);
