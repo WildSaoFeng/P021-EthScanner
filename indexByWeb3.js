@@ -69,6 +69,7 @@ async function uniqueAddAddress(newAddress) {
     return;
   // console.log(" RESULT " + result);
   let result2 = await EthContract.checkUnique(newAddress);
+  console.log(" RESULT " + result2);
   if(!result2)
     return ;
   {
