@@ -3,7 +3,7 @@ var Web3 = require('web3');
 var mongoose = require('mongoose');
 var moment = require('moment');
 
-const startBlock = 4900000;
+const startBlock = 1;
 const endBlock = 5000000;
 
 // Part  Setting Up DB Model
@@ -41,7 +41,7 @@ async function connectWeb3() {
 }
 
 async function connectDB() {
-  mongoose.connect('mongodb://localhost:27017/ethscanner');
+  mongoose.connect('mongodb://localhost:27017/unique_eth_data');
   mongoose.connection.on('connected', () => {
    console.log('MongoDB has started successfully.');
   });
